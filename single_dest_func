@@ -1,0 +1,35 @@
+
+# you can find all the details to get your app id and key id here https://api.tfl.gov.uk/. You first need to register
+# The destinations are meant in LAT-LON degrees.
+
+api_tfl_single <- function(app_id,
+                    key_id,
+                    destination = c("51.50", "0.1278"),
+                    start = c("51.57696","0.068332500"),
+                    date_tfl,
+                    time_tfl,
+                    download_file_path) {
+  
+  download.file(paste0("https://api.tfl.gov.uk/journey/journeyresults/", 
+                       start[1], 
+                       ",",
+                       start[2],
+                       "/to/",
+                       destination[1],
+                       ",",
+                       destination[2],
+                       "?date=",
+                       date_tfl,
+                       "&time=",
+                       time_tfl,
+                       "&timeIs=Departing",
+                       "&app_id=",
+                       app_id,
+                       "&app_key=",
+                       key_id), 
+                download_file_path
+          )
+  temp <- fromJSON(download_file_path)
+  return(temp)
+  
+}
