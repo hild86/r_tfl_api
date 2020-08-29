@@ -1,6 +1,16 @@
 
-# you can find all the details to get your app id and key id here https://api.tfl.gov.uk/. You first need to register
-# The destinations are meant in LAT-LON degrees.
+#' This function will return the TFL API, note that it is a simplified version. 
+#' For the complete documentation you can find it here https://api.tfl.gov.uk/swagger/ui/index.html?url=/swagger/docs/v1#!/Journey/Journey_JourneyResults
+#'  
+#' @param app_id is the tfl personal id (you need to register on https://api.tfl.gov.uk/ to get one) 
+#' @param key_id is the tfl personal id (you need to register on https://api.tfl.gov.uk/ to get one)
+#' @param destination is an array with lat and lon coordinates of your destination
+#' @param start is an array with lat and lon coordinates of your starting point
+#' @param date_tfl is the date of the journey (in format yyyyMMdd)
+#' @param time_tfl is the time of the journey (in format HHmm)
+#' @param download_file_path is the location where you want to save the API return
+#' @return the JSON API return
+#' 
 
 api_tfl_single <- function(app_id,
                     key_id,
